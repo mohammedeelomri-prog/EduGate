@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "32263615732",
+    "project_id": "servicescolairefstg",
+    "storage_bucket": "servicescolairefstg.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:32263615732:android:d2897fd3036e3341069aa1",
+        "android_client_info": {
+          "package_name": "com.example.projet_mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZVxb78Lv5wRhG9XzieqrVjpTrhptLek0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

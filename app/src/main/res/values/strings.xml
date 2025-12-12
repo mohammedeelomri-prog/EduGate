@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Projet-Mobile</string>
+    <string-array name="roles_array">
+        <item>Administrateur</item>
+        <item>Prof</item>
+        <item>Etudiant</item>
+    </string-array>
+
+</resources>
