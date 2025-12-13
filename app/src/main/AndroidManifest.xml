@@ -12,14 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjetMobile">
 
-        <!-- Déclaration des activités -->
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".AdminDashboardActivity" />
         <activity android:name=".ProfDashboardActivity" />
         <activity android:name=".StudentDashboardActivity" />
 
-        <!-- MainActivity comme launcher -->
+        <activity android:name=".announcement.CreateAnnouncementActivity" />
+        <activity android:name=".announcement.AnnouncementListActivity" />
+        <activity android:name=".announcement.EditAnnouncementActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

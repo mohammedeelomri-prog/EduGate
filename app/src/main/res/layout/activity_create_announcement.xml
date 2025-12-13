@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    tools:context=".announcement.CreateAnnouncementActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rédiger une nouvelle annonce"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="24dp"/>
+
+    <EditText
+        android:id="@+id/etTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Titre (max. 50 caractères)"
+        android:inputType="textCapSentences"
+        android:minHeight="48dp"
+        android:background="@drawable/edit_text_background"
+        android:padding="12dp"
+        android:maxLength="50"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/etContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Contenu détaillé de l'annonce..."
+        android:gravity="top"
+        android:lines="8"
+        android:inputType="textMultiLine|textCapSentences"
+        android:background="@drawable/edit_text_background"
+        android:padding="12dp"
+        android:layout_weight="1"/> <Button
+    android:id="@+id/btnPublish"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Publier l'annonce"
+    android:layout_marginTop="24dp"
+    android:backgroundTint="#FF9800"
+    android:textColor="@android:color/white"/>
+
+</LinearLayout>
