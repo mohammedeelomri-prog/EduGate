@@ -1,0 +1,25 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Règles pour les demandes de documents
+    match /document_requests/{requestId} {
+      // Permettre la lecture à l'utilisateur qui a créé la demande et aux admins
+      allow read: if request.auth != null && 
+                     (resource.data.userId == request.auth.uid || 
+                      get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'Administrateur');
+      
+      // Permettre la création uniquement aux utilisateurs authentifiés
+      allow create: if request.auth != null && 
+                       request.resource.data.userId == request.auth.uid;
+      
+      // Permettre la mise à jour uniquement aux admins
+      allow update: if request.auth != null && 
+                       get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'Administrateur';
+      
+      // Permettre la suppression uniquement aux admins
+      allow delete: if request.auth != null && 
+                       get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'Administrateur';
+    }
+  }
+}

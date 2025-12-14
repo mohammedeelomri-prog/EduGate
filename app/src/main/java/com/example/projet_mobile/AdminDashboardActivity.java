@@ -10,7 +10,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class AdminDashboardActivity extends AppCompatActivity {
 
-        Button btnLogout;
+        Button btnLogout, btnManageRequests;
         FirebaseAuth mAuth;
 
         @Override
@@ -20,6 +20,12 @@ public class AdminDashboardActivity extends AppCompatActivity {
 
             mAuth = FirebaseAuth.getInstance();
             btnLogout = findViewById(R.id.btnLogout);
+            btnManageRequests = findViewById(R.id.btnManageRequests);
+
+            btnManageRequests.setOnClickListener(v -> {
+                Intent intent = new Intent(AdminDashboardActivity.this, AdminRequestsActivity.class);
+                startActivity(intent);
+            });
 
             btnLogout.setOnClickListener(v -> {
                 mAuth.signOut(); // Déconnexion Firebase

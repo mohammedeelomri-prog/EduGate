@@ -26,7 +26,7 @@ public class ProfDashboardActivity extends AppCompatActivity {
             mAuth.signOut(); // Déconnexion Firebase
 
             // Revenir vers LoginActivity
-            Intent intent = new Intent(AdminDashboardActivity.this, LoginActivity.class);
+            Intent intent = new Intent(ProfDashboardActivity.this, LoginActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
