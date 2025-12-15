@@ -83,6 +83,30 @@
                         android:textColor="@color/text_white"
                         style="@style/ButtonPrimary"/>
 
+                    <Button
+                        android:id="@+id/btnCreateAnnouncement"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="📢 Créer une annonce"
+                        android:textSize="16sp"
+                        android:textAllCaps="false"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp"
+                        android:layout_marginTop="12dp"
+                        style="@style/ButtonSecondary"/>
+
+                    <Button
+                        android:id="@+id/btnViewAnnouncements"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="📋 Gérer les annonces"
+                        android:textSize="16sp"
+                        android:textAllCaps="false"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp"
+                        android:layout_marginTop="12dp"
+                        style="@style/ButtonSecondary"/>
+
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>

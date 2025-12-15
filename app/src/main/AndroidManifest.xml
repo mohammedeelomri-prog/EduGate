@@ -28,6 +28,10 @@
         <activity android:name=".MyRequestsActivity" />
         <activity android:name=".AdminRequestsActivity" />
         <activity android:name=".RequestDetailActivity" />
+        <activity android:name=".CreateAnnouncementActivity" />
+        <activity android:name=".AnnouncementsActivity" />
+        <activity android:name=".EditAnnouncementActivity" />
+        <activity android:name=".AnnouncementDetailActivity" />
 
         <!-- MainActivity comme launcher -->
         <activity

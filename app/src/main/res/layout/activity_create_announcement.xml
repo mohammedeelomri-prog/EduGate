@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_gradient_primary"
+            android:padding="24dp"
+            android:elevation="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📢 Nouvelle annonce"
+                android:textSize="16sp"
+                android:textColor="@color/text_white"
+                android:alpha="0.9"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Créer une annonce"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_white"
+                android:layout_marginTop="4dp"/>
+
+        </LinearLayout>
+
+        <!-- Formulaire -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Card Formulaire -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <!-- Titre -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/titleLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Titre *"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:boxStrokeColor="@color/primary"
+                        app:hintTextColor="@color/primary"
+                        android:layout_marginBottom="16dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:maxLines="2"
+                            android:textSize="16sp"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Contenu -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/contentLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Contenu *"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:boxStrokeColor="@color/primary"
+                        app:hintTextColor="@color/primary"
+                        android:layout_marginBottom="16dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etContent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textMultiLine"
+                            android:minHeight="150dp"
+                            android:gravity="top|start"
+                            android:maxLines="10"
+                            android:textSize="16sp"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Section Image -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Image (optionnelle)"
+                        android:textSize="14sp"
+                        android:textColor="@color/text_secondary"
+                        android:layout_marginBottom="8dp"/>
+
+                    <!-- Aperçu de l'image -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/imagePreviewCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="2dp"
+                        android:layout_marginBottom="12dp"
+                        android:visibility="gone">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/ivPreview"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:contentDescription="Aperçu de l'image"/>
+
+                            <Button
+                                android:id="@+id/btnRemoveImage"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_margin="8dp"
+                                android:text="✕"
+                                android:textSize="18sp"
+                                android:textColor="@color/text_white"
+                                android:background="@drawable/bg_status_rejected"
+                                android:padding="0dp"/>
+
+                        </RelativeLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Bouton sélectionner image -->
+                    <Button
+                        android:id="@+id/btnSelectImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="🖼️ Sélectionner une image"
+                        android:textSize="16sp"
+                        android:textAllCaps="false"
+                        android:paddingTop="14dp"
+                        android:paddingBottom="14dp"
+                        style="@style/ButtonSecondary"
+                        android:layout_marginBottom="8dp"/>
+
+                    <!-- Info taille -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ℹ️ Taille maximale : 500 KB"
+                        android:textSize="12sp"
+                        android:textColor="@color/text_hint"
+                        android:layout_marginBottom="16dp"/>
+
+                    <!-- Barre de progression -->
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+
+                    <TextView
+                        android:id="@+id/tvProgress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Upload en cours..."
+                        android:textSize="14sp"
+                        android:textColor="@color/text_secondary"
+                        android:layout_marginTop="8dp"
+                        android:visibility="gone"/>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Boutons d'action -->
+            <Button
+                android:id="@+id/btnPublish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="📢 Publier l'annonce"
+                android:textSize="16sp"
+                android:textAllCaps="false"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:background="@drawable/bg_button_primary"
+                android:textColor="@color/text_white"
+                style="@style/ButtonPrimary"
+                android:layout_marginBottom="12dp"/>
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Annuler"
+                android:textSize="16sp"
+                android:textAllCaps="false"
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp"
+                style="@style/ButtonSecondary"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

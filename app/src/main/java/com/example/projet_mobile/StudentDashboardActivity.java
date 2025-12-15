@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class StudentDashboardActivity extends AppCompatActivity {
 
-    Button btnLogout, btnRequestDocument, btnViewRequests;
+    Button btnLogout, btnRequestDocument, btnViewRequests, btnViewAnnouncements;
     FirebaseAuth mAuth;
 
     @Override
@@ -23,6 +23,7 @@ public class StudentDashboardActivity extends AppCompatActivity {
         btnLogout = findViewById(R.id.btnLogout);
         btnRequestDocument = findViewById(R.id.btnRequestDocument);
         btnViewRequests = findViewById(R.id.btnViewRequests);
+        btnViewAnnouncements = findViewById(R.id.btnViewAnnouncements);
 
         btnRequestDocument.setOnClickListener(v -> {
             Intent intent = new Intent(StudentDashboardActivity.this, DocumentRequestActivity.class);
@@ -31,6 +32,11 @@ public class StudentDashboardActivity extends AppCompatActivity {
 
         btnViewRequests.setOnClickListener(v -> {
             Intent intent = new Intent(StudentDashboardActivity.this, MyRequestsActivity.class);
+            startActivity(intent);
+        });
+
+        btnViewAnnouncements.setOnClickListener(v -> {
+            Intent intent = new Intent(StudentDashboardActivity.this, AnnouncementsActivity.class);
             startActivity(intent);
         });
 

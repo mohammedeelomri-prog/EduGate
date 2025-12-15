@@ -10,7 +10,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class AdminDashboardActivity extends AppCompatActivity {
 
-        Button btnLogout, btnManageRequests;
+        Button btnLogout, btnManageRequests, btnCreateAnnouncement, btnViewAnnouncements;
         FirebaseAuth mAuth;
 
         @Override
@@ -21,9 +21,21 @@ public class AdminDashboardActivity extends AppCompatActivity {
             mAuth = FirebaseAuth.getInstance();
             btnLogout = findViewById(R.id.btnLogout);
             btnManageRequests = findViewById(R.id.btnManageRequests);
+            btnCreateAnnouncement = findViewById(R.id.btnCreateAnnouncement);
+            btnViewAnnouncements = findViewById(R.id.btnViewAnnouncements);
 
             btnManageRequests.setOnClickListener(v -> {
                 Intent intent = new Intent(AdminDashboardActivity.this, AdminRequestsActivity.class);
+                startActivity(intent);
+            });
+
+            btnCreateAnnouncement.setOnClickListener(v -> {
+                Intent intent = new Intent(AdminDashboardActivity.this, CreateAnnouncementActivity.class);
+                startActivity(intent);
+            });
+
+            btnViewAnnouncements.setOnClickListener(v -> {
+                Intent intent = new Intent(AdminDashboardActivity.this, AnnouncementsActivity.class);
                 startActivity(intent);
             });
 

@@ -2,24 +2,69 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     
+    // Fonction helper pour vérifier si l'utilisateur est admin
+    function isAdmin() {
+      return request.auth != null && 
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    // Fonction helper pour vérifier si l'utilisateur est prof ou admin
+    function isProfOrAdmin() {
+      return request.auth != null && 
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'prof'];
+    }
+    
+    // Fonction helper pour vérifier si l'utilisateur est authentifié
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    // Règles pour les utilisateurs
+    match /users/{userId} {
+      // Lecture : utilisateur lui-même ou admin
+      allow read: if isAuthenticated() && (request.auth.uid == userId || isAdmin());
+      
+      // Création : lors de l'inscription uniquement
+      allow create: if isAuthenticated() && request.auth.uid == userId;
+      
+      // Mise à jour : utilisateur lui-même ou admin
+      allow update: if isAuthenticated() && (request.auth.uid == userId || isAdmin());
+      
+      // Suppression : admin uniquement
+      allow delete: if isAdmin();
+    }
+    
     // Règles pour les demandes de documents
     match /document_requests/{requestId} {
-      // Permettre la lecture à l'utilisateur qui a créé la demande et aux admins
-      allow read: if request.auth != null && 
-                     (resource.data.userId == request.auth.uid || 
-                      get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'Administrateur');
+      // Lecture : utilisateur propriétaire ou admin
+      allow read: if isAuthenticated() && 
+                     (resource.data.userId == request.auth.uid || isAdmin());
       
-      // Permettre la création uniquement aux utilisateurs authentifiés
-      allow create: if request.auth != null && 
+      // Création : utilisateur authentifié uniquement
+      allow create: if isAuthenticated() && 
                        request.resource.data.userId == request.auth.uid;
       
-      // Permettre la mise à jour uniquement aux admins
-      allow update: if request.auth != null && 
-                       get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'Administrateur';
+      // Mise à jour : admin uniquement
+      allow update: if isAdmin();
       
-      // Permettre la suppression uniquement aux admins
-      allow delete: if request.auth != null && 
-                       get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'Administrateur';
+      // Suppression : admin uniquement
+      allow delete: if isAdmin();
+    }
+    
+    // Règles pour les annonces
+    match /announcements/{announcementId} {
+      // Lecture : TOUS les utilisateurs authentifiés
+      allow read: if isAuthenticated();
+      
+      // Création : admin ou prof
+      allow create: if isProfOrAdmin() && 
+                       request.resource.data.authorId == request.auth.uid;
+      
+      // Mise à jour : admin ou prof (auteur)
+      allow update: if isProfOrAdmin();
+      
+      // Suppression : admin ou prof
+      allow delete: if isProfOrAdmin();
     }
   }
 }
